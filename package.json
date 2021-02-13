@@ -4,6 +4,7 @@
   "description": "IMDb list of movies that the user can rate and store titles into a personal list",
   "main": "index.js",
   "scripts": {
+    "react": "cd node_modules/react-scripts && node bin/react-scripts.js start",
     "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" \"webpack-dev-server --open --hot\""
@@ -45,11 +46,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "axios": "^0.21.1",
     "pg": "^8.5.1",
-    "body-parser": "^1.19.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
