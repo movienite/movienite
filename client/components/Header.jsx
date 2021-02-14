@@ -4,7 +4,7 @@ class Header extends Component {
 
   render() {
 
-    const { query, updateQuery } = this.props;
+    const { query, updateQuery, querySearch } = this.props;
 
     return(
         <div className="Header">
@@ -12,7 +12,7 @@ class Header extends Component {
             <div>movienite</div>
             <div>
               <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
-              <button className="SearchButton"><i class="fa fa-search"></i>Search</button>
+              <button onClick={querySearch} className="SearchButton">Search</button>
             </div>
             <div>Saved Movies</div>
         

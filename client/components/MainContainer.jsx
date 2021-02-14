@@ -42,7 +42,7 @@ class MainContainer extends Component {
   }
 
   componentDidMount() {
-    this.querySearch();
+    //this.querySearch();
   }
 
   updateQuery(event) {
@@ -55,41 +55,43 @@ class MainContainer extends Component {
     })
   }
 
-  querySearch() {
+  querySearch(event) {
+    event.preventDefault();
     // Make get api request to backend route
     let query = this.state.query;
 
-    //  fetch(`/api/search/${query}`, {
-    //   method: 'GET',
-    //   header: {
-    //     'Content-Type': 'application/json; charset="UTF-8"',
-    //   }
-    //  })
-    //   .then((data) => data.json())
-    //   .then(data => {
-    //     this.setState((state) => {
-    //       return {
-    //         query: '',
-    //         results: data
-    //       }
-    //     })
-    //   })
-
-    // Receive data 
-    let data = search.movie_results;
-    // Pass received data to state by invoking setState 
-    this.setState((state) => {
-      return {
-        ...state,
-        results: data,
+     fetch(`/api/search/${query}`, {
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json; charset="UTF-8"',
       }
-    })
+     })
+      .then((data) => data.json())
+      .then(data => {
+        console.log(data);
+        this.setState((state) => {
+          return {
+            query: '',
+            results: data
+          }
+        })
+      })
+
+    // REQUEST WITH DUMMY DATA: 
+    // let data = search.movie_results;
+    // // Pass received data to state by invoking setState 
+    // this.setState((state) => {
+    //   return {
+    //     ...state,
+    //     results: data,
+    //   }
+    // })
   }
 
   render() {
     return(
         <div className="MainContainer">
-          <Header updateQuery={this.updateQuery} query={this.state.query}/> 
+          <Header querySearch={this.querySearch} updateQuery={this.updateQuery} query={this.state.query}/> 
           <MoviesDisplay results={this.state.results}/>
         </div>
     )
