@@ -10,10 +10,10 @@ class MoviesDisplay extends Component {
     // const results = this.props.results;
     const tiles = results.map((result, index) => {
       return(<MovieTile key={index} 
-                 title={result.title} 
-                 year={result.year} 
-                 imdbId={result.imdb_id} 
-                 url={result.poster}
+                 title={result.Title} 
+                 year={result.Year} 
+                 imdbId={result.imddID} 
+                 url={result.Poster}
                  />)
     })
     return(

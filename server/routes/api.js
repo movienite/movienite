@@ -4,9 +4,9 @@ const savedMovieController = require('../controllers/savedMovieController');
 
 
 
-router.get('/search/:title', savedMovieController.findTitleAndId, savedMovieController.getPoster, (req, res) => {
-  console.log(res.locals.filmWithPoster);
-  res.status(200).json(res.locals.filmWithPoster);
+router.get('/search/:title', savedMovieController.findTitleAndId, (req, res) => {
+  console.log(res.locals.searchResults);
+  res.status(200).json(res.locals.searchResults);
 });
 
 // router.get();

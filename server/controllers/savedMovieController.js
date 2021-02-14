@@ -9,59 +9,23 @@ const savedMovieController = {};
 savedMovieController.findTitleAndId = (req, res, next) => {
   const options = {
     method: 'GET',
-    url: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
-    params: {type: 'get-movies-by-title', title: `${req.params.title}`},
+    url: 'https://movie-database-imdb-alternative.p.rapidapi.com/',
+    params: {s: `${req.params.title}`, page: '1-2', r: 'json'},
     headers: {
-      'x-rapidapi-key': '081dbdf260msh363bc0cda44327ep16cc20jsnbd0bdd18459b',
-      'x-rapidapi-host': 'movies-tvshows-data-imdb.p.rapidapi.com'
+      'x-rapidapi-key': '47549ac224msh5a74db6a2cff7c9p1ed3ddjsn058880310a4c',
+      'x-rapidapi-host': 'movie-database-imdb-alternative.p.rapidapi.com'
     }
   };
   
   axios.request(options)
     .then(response => {
-      // console.log(response.data.movie_results);
-      res.locals.initialSearch = response.data.movie_results.slice(0, 4);
+      console.log(response.data.Search);
+      res.locals.searchResults = response.data.Search;
       return next();
     })
     .catch(err => {
       console.error(err);
       return next(err);
-    });
-};
-
-
-
-savedMovieController.getPoster = async (req, res, next) => {
-  const fetches = res.locals.initialSearch.map(film => {
-    const options = {
-      method: 'GET',
-      url: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
-      params: {type: 'get-movies-images-by-imdb', imdb: `${film.imdb_id}`},
-      headers: {
-        'x-rapidapi-key': '081dbdf260msh363bc0cda44327ep16cc20jsnbd0bdd18459b',
-        'x-rapidapi-host': 'movies-tvshows-data-imdb.p.rapidapi.com'
-      }
-    };
-    return (
-      axios.request(options)
-        .then(response => {
-          return {
-            ...film, 
-            poster: response.data.poster,
-          }
-        })
-        .catch(error => {
-          console.error(error);
-          return next(error);
-        })        
-    )
-  })
-
-  Promise.all(fetches)
-    .then(results => {
-      res.locals.filmWithPoster = results;
-      return next();
-      //console.log(results)
     });
 };
 
