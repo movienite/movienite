@@ -118,4 +118,24 @@ savedMovieController.savedFilm = (req, res, next) => {
 };
 
 
+
+
+// This makes a DELETE fetch to our PostgreSQL database, deleting the row data 
+// for the provided imdb_id
+savedMovieController.deleteFilm = (req, res, next) => {
+  const value = [ req.params.imdbid ]; // double check against actual provided params
+  const sqlQuery = `DELETE FROM savedmovies WHERE imdb_id = $1`;
+
+  db.query(sqlQuery, values)
+    .then(response => {
+      res.locals.deletedFilm = response.rows[0]; // double check with actual req.body
+      return next();
+    })
+    .catch(err => {
+      console.error(err);
+      return next(err);
+    })
+};
+
+
 module.exports = savedMovieController;

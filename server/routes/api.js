@@ -24,7 +24,11 @@ router.post('/saved', savedMovieController.savedFilm, (req, res) => {
 
 // router.update();
 
-// router.delete();
+router.delete('/saved/:imdbid', savedMovieController.deleteFilm, (req, res) => {
+  res.status(200).json(res.locals.deleteFilm);
+});
+
+
 
 
 module.exports = router;
