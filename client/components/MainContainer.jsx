@@ -27,25 +27,54 @@ const search = {
   ]
 }
 
-
 class MainContainer extends Component {
 
   constructor() {
     super();
 
     this.state = { 
+      query: '',
       results: [],
     }
 
     this.querySearch = this.querySearch.bind(this);
+    this.updateQuery = this.updateQuery.bind(this);
   }
 
   componentDidMount() {
     this.querySearch();
   }
 
+  updateQuery(event) {
+    const { value } = event.target;
+    this.setState(state => {
+      return {
+        ...state, 
+        query: value,
+      }
+    })
+  }
+
   querySearch() {
-    // Make get api request to backend route 
+    // Make get api request to backend route
+    let query = this.state.query;
+
+    //  fetch(`/api/search/${query}`, {
+    //   method: 'GET',
+    //   header: {
+    //     'Content-Type': 'application/json; charset="UTF-8"',
+    //   }
+    //  })
+    //   .then((data) => data.json())
+    //   .then(data => {
+    //     this.setState((state) => {
+    //       return {
+    //         query: '',
+    //         results: data
+    //       }
+    //     })
+    //   })
+
     // Receive data 
     let data = search.movie_results;
     // Pass received data to state by invoking setState 
@@ -60,7 +89,7 @@ class MainContainer extends Component {
   render() {
     return(
         <div className="MainContainer">
-          <Header /> 
+          <Header updateQuery={this.updateQuery} query={this.state.query}/> 
           <MoviesDisplay results={this.state.results}/>
         </div>
     )
