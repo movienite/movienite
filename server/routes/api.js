@@ -9,7 +9,10 @@ router.get('/search/:title', savedMovieController.findTitleAndId, (req, res) => 
   res.status(200).json(res.locals.searchResults);
 });
 
-// router.get();
+router.get('/select/:imdbid', savedMovieController.selectTitle, (req, res) => {
+  // console.log(res.locals.filmDetails);
+  res.status(200).json(res.locals.filmDetails);
+});
 
 // router.post('/liked', savedMovieController.likedFilm, (req, res) => {
 //   res.status(200).json(res.locals.likedFilm);
