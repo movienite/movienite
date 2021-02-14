@@ -23,12 +23,13 @@ body {
 .Header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
-.SearchBar {
+.search-input {
   width: 600px;
   height: 30px;
 }
@@ -36,4 +37,21 @@ body {
 .SearchButton {
   width: 70px;
   height: 36px;
+}
+
+.home-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.home-logo {
+  margin-bottom: 50px;
+  font-size: 3em;
+}
+
+.main-container {
+  visibility: hidden;
 }

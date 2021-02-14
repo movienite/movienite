@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SearchBar from './SearchBar';
 
 class Header extends Component {
 
@@ -10,10 +11,10 @@ class Header extends Component {
         <div className="Header">
           
             <div>movienite</div>
-            <div>
-              <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
+            <div className="search-bar">
+              <input onChange={updateQuery} value={query} className="search-input" type="text"></input>
               <button onClick={querySearch} className="SearchButton">Search</button>
-            </div>
+            </div>            
             <div>Saved Movies</div>
         
         </div>
