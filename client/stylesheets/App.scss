@@ -1,3 +1,39 @@
 body {
-  background-color: black;
+  background-color: rgb(24, 24, 24);
+  color: rgb(236, 236, 236);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tile-poster {
+  width: 200px;
+}
+
+.MoviesDisplay {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.App {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; 
+
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.SearchBar {
+  width: 600px;
+  height: 30px;
+}
+
+.SearchButton {
+  width: 70px;
+  height: 36px;
 }
