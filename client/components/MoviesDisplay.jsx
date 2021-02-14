@@ -12,7 +12,7 @@ class MoviesDisplay extends Component {
       return(<MovieTile key={index} 
                  title={result.Title} 
                  year={result.Year} 
-                 imdbId={result.imddID} 
+                 imdbId={result.imdbID} 
                  url={result.Poster}
                  />)
     })
