@@ -4,6 +4,7 @@
   "description": "IMDb list of movies that the user can rate and store titles into a personal list",
   "main": "index.js",
   "scripts": {
+    "react": "cd node_modules/react-scripts && node bin/react-scripts.js start",
     "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" \"webpack-dev-server --open --hot\""
