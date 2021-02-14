@@ -20,13 +20,17 @@ router.get('/select/:imdbid',
   }
 );
 
-// router.post('/liked', savedMovieController.likedFilm, (req, res) => {
-//   res.status(200).json(res.locals.likedFilm);
-// });
+router.post('/saved', savedMovieController.savedFilm, (req, res) => {
+  res.status(200).json(res.locals.savedFilm);
+});
 
 // router.update();
 
-// router.delete();
+router.delete('/saved/:imdbid', savedMovieController.deleteFilm, (req, res) => {
+  res.status(200).json(res.locals.deleteFilm);
+});
+
+
 
 
 route.get('/usersaved', userListController.userSaved, (req, res) => {
