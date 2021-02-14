@@ -30,7 +30,8 @@ savedMovieController.findTitleAndId = (req, res, next) => {
 };
 
 
-
+// This makes an API fetch to RapidAPI's IMDb Alternative API with a specific imdbId 
+// and returns a large list of various movie details
 savedMovieController.selectTitle = (req, res, next) => {
   const options = {
     method: 'GET',
@@ -55,7 +56,8 @@ savedMovieController.selectTitle = (req, res, next) => {
 };
 
 
-
+// This makes an API fetch to RapidAPI's IMDb API with the same imdbId as the previous mw 
+// and adds the youtube link for a movie trailer to the response
 savedMovieController.getTrailer = (req, res, next) => {
   const options = {
     method: 'GET',
@@ -78,5 +80,10 @@ savedMovieController.getTrailer = (req, res, next) => {
       return next(err);
     });
 };
+
+
+
+
+
 
 module.exports = savedMovieController;
