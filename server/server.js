@@ -2,8 +2,7 @@ const express = require('express');
 const PORT = 3000;
 const app = express();
 const path = require('path');
-const apiRouter = require('./routes/api.js');
-
+const apiRouter = require('./routes/api');
 
 
 
