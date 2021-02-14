@@ -2,30 +2,9 @@ import React, { Component } from "react";
 import "../stylesheets/App.scss"
 import Header from '../components/Header';
 import MoviesDisplay from '../components/MoviesDisplay';
-
-// Ask server to pass the array directly, not an object
-const search = {
-  "movie_results":[
-    {
-    "title":"Batman & Bill",
-    "year":2017,
-    "imdb_id":"tt6067832",
-    "url": "http://image.tmdb.org/t/p/original/gc1oyq0K8TdtFTXmYV03v536HsI.jpg"
-    },
-    {
-    "title":"Batman & Mr. Freeze: SubZero",
-    "year":1998,
-    "imdb_id":"tt0143127",
-    "url": "http://image.tmdb.org/t/p/original/eIeT9dsFeKiKNxjWyXHTL92TTrJ.jpg",
-    },
-    {
-    "title":"Batman & Robin",
-    "year":1997,
-    "imdb_id":"tt0118688",
-    "url": "http://image.tmdb.org/t/p/original/bsg0mrxUKyJoL4oSGP5mlhEsqp.jpg",
-    }
-  ]
-}
+import MovieDetails from '../components/MovieDetails';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MoviesDetails from "../components/MovieDetails";
 
 class MainContainer extends Component {
 
@@ -90,10 +69,15 @@ class MainContainer extends Component {
 
   render() {
     return(
+      <Router>
         <div className="MainContainer">
           <Header querySearch={this.querySearch} updateQuery={this.updateQuery} query={this.state.query}/> 
-          <MoviesDisplay results={this.state.results}/>
+          <Switch>
+            <Route path='/' exact render={() => <MoviesDisplay results={this.state.results} />}/>
+            <Route path='/movie/:id' component={MoviesDetails}/>
+          </Switch>
         </div>
+      </Router>
     )
   }
 }
