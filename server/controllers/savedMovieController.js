@@ -54,4 +54,29 @@ savedMovieController.selectTitle = (req, res, next) => {
     });
 };
 
+
+
+savedMovieController.getTrailer = (req, res, next) => {
+  const options = {
+    method: 'GET',
+    url: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
+    params: {type: 'get-movie-details', imdb: `${req.params.imdbid}`},
+    headers: {
+      'x-rapidapi-key': '081dbdf260msh363bc0cda44327ep16cc20jsnbd0bdd18459b',
+      'x-rapidapi-host': 'movies-tvshows-data-imdb.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options)
+    .then(response => {
+      // console.log(response.data);
+      res.locals.filmDetails.trailer = `youtu.be/${response.data.youtube_trailer_key}`;
+      return next();
+    })
+    .catch(err => {
+      console.error(err);
+      return next(err);
+    });
+};
+
 module.exports = savedMovieController;
