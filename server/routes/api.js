@@ -33,10 +33,10 @@ router.delete('/saved/:imdbid', savedMovieController.deleteFilm, (req, res) => {
 
 
 
-route.get('/usersaved', userListController.userSaved, (req, res) => {
-  console.log(res.locals.userSavedList);
-  res.status(200).json(res.locals.userSavedList);
-})
+// route.get('/usersaved', userListController.userSaved, (req, res) => {
+//   console.log(res.locals.userSavedList);
+//   res.status(200).json(res.locals.userSavedList);
+// });
 
 
 module.exports = router;
