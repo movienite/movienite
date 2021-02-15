@@ -18,6 +18,10 @@ router.get('/select/:imdbid',
   }
 );
 
+router.get('/select/exist/:imdbid', savedMovieController.checkSql, (req, res) => {
+  res.status(200).json(res.locals.checkedQuery);
+})
+
 router.post('/saved', savedMovieController.savedFilm, (req, res) => {
   res.status(200).json(res.locals.savedFilm);
 });
@@ -25,9 +29,9 @@ router.post('/saved', savedMovieController.savedFilm, (req, res) => {
 // router.update();
 
 router.delete('/saved/:imdbid', savedMovieController.deleteFilm, (req, res) => {
-  res.status(200).json(res.locals.deleteFilm);
+  // console.log(res.locals.deletedFilm);
+  res.status(200).json(res.locals.deletedFilm);
 });
-
 
 
 

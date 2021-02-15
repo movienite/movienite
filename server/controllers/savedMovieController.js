@@ -56,6 +56,7 @@ savedMovieController.selectTitle = (req, res, next) => {
 };
 
 
+
 // This makes a GET fetch to RapidAPI's IMDb API with the same imdbId as the previous mw 
 // and adds the youtube link for a movie trailer to the response
 savedMovieController.getTrailer = (req, res, next) => {
@@ -83,32 +84,68 @@ savedMovieController.getTrailer = (req, res, next) => {
 
 
 
+// This makes a query to our PostgreSQL database, 
+// checking for the row data for the provided imdb_id
+savedMovieController.checkSql = (req, res, next) => {
+  const value = [ req.params.imdbid ]; // double check against actual provided params
+  const sqlQuery = `SELECT film_id FROM savedmovies WHERE imdb_film_id = $1`;
+
+  db.query(sqlQuery, value)
+    .then(response => {
+      console.log(response);
+      if (response.rows[0]) {
+        res.locals.checkedQuery = true;
+        return next();        
+      }
+      else {
+        res.locals.checkedQuery = false;
+        return next();
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      return next(err);
+    })
+};
+
+
+
 // This makes a POST fetch to our PostgreSQL database, storing most of the data 
 // retrieved from the GET request for the selected film
 savedMovieController.savedFilm = (req, res, next) => {
   const {
-    imdb_film_id, title, release_date, mpaa_rating, runtime,
-    genre, director, writer, actors, plot, language, country, 
-    poster, imdb_score, imd_score, rt_score, mc_score, 
-    box_office, movienite_user_rating, trailer_link
-  } = req.body; // maybe req.params
+    imdbID, Title, Released, Rated, Runtime,
+    Genre, Director, Writer, Actors, Plot, Language, Country, 
+    Poster, imdbRating, 
+    BoxOffice, movienite_user_rating, trailer
+  } = req.body;
+  // const imdRating = req.body.Ratings[0].Value;
+  // const rtRating = req.body.Ratings[1].Value;
+  // const mcRating = req.body.Ratings[2].Value;
+  const imdRating = req.body.imdRating;
+  const rtRating = req.body.rtRating;
+  const mcRating = req.body.mcRating;
+
 
   const values = [
-    imdb_film_id, title, release_date, mpaa_rating, runtime,
-    genre, director, writer, actors, plot, language, country, 
-    poster, imdb_score, imd_score, rt_score, mc_score, 
-    box_office, movienite_user_rating, trailer_link
+    imdbID, Title, Released, Rated, Runtime,
+    Genre, Director, Writer, Actors, Plot, Language, Country, 
+    Poster, imdbRating, imdRating, rtRating, mcRating, 
+    BoxOffice, movienite_user_rating, trailer
   ];
 
   const sqlQuery = `
-    INSERT INTO savedMovies 
+    INSERT INTO savedmovies ( imdb_film_id, title, release_date, 
+                mpaa_rating, runtime, genre, director, writer, actors, 
+                plot, language, country, poster, imdb_score, imd_score, rt_score, 
+                mc_score, box_office, movienite_user_rating, trailer_link )
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 
             $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
   `;
 
   db.query(sqlQuery, values)
     .then(response => {
-      res.locals.savedFilm = response.rows[0]; // double check this with actual req.body
+      res.locals.savedFilm = response.rows[0];
       return next();
     })
     .catch(err => {
@@ -119,22 +156,22 @@ savedMovieController.savedFilm = (req, res, next) => {
 
 
 
-
 // This makes a DELETE fetch to our PostgreSQL database, deleting the row data 
 // for the provided imdb_id
 savedMovieController.deleteFilm = (req, res, next) => {
-  const value = [ req.params.imdbid ]; // double check against actual provided params
-  const sqlQuery = `DELETE FROM savedmovies WHERE imdb_id = $1`;
+  const value = [ req.params.imdbid ];
+  const sqlQuery = `DELETE FROM savedmovies WHERE imdb_film_id = $1`;
 
-  db.query(sqlQuery, values)
+  db.query(sqlQuery, value)
     .then(response => {
-      res.locals.deletedFilm = response.rows[0]; // double check with actual req.body
+      res.locals.deletedFilm = `Data for imdb_film_id = ${value} successfully deleted.`;
       return next();
     })
     .catch(err => {
       console.error(err);
       return next(err);
     })
+
 };
 
 
