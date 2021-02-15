@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import MovieDetails from "../components/MovieDetails";
 
 class MovieTile extends Component {
@@ -8,7 +9,7 @@ class MovieTile extends Component {
         <div className="MovieTile">
           <p>{title}</p>
           <p>{year}</p>
-          <img className="tile-poster" src={url}></img>
+          <Link to={`/movie/${imdbId}`}><img className="tile-poster" src={url}></img></Link>
         </div>
     )
   }
