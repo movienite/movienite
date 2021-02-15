@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const savedMovieController = require('../controllers/savedMovieController');
+const userListController = require('../controllers/userListController');
+const { route } = require('../server');
 
 
 
