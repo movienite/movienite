@@ -36,6 +36,7 @@ class MainContainer extends Component {
 
   querySearch(event) {
     event.preventDefault();
+    
     // Make get api request to backend route
     let query = this.state.query;
 
@@ -56,6 +57,7 @@ class MainContainer extends Component {
         })
       })
 
+      this.props.history.push('/');
     // REQUEST WITH DUMMY DATA: 
     // let data = search.movie_results;
     // // Pass received data to state by invoking setState 
