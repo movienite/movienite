@@ -19,8 +19,8 @@ savedMovieController.findTitleAndId = (req, res, next) => {
   
   axios.request(options)
     .then(response => {
-      // console.log(response.data.Search);
-      res.locals.searchResults = response.data.Search;
+      if (!response.data.Search) res.locals.searchResults = {};
+      else res.locals.searchResults = response.data.Search;
       return next();
     })
     .catch(err => {
