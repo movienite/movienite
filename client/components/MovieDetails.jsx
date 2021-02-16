@@ -49,111 +49,93 @@ class MovieDetails extends Component {
           "Website": "",
           "Response": "",
           "trailer": "",
-          "movienite_user_rating": null
+          "movienite_user_rating": ""
         },
         hasBeenLiked: false,
       }
+
+      this.handleSave = this.handleSave.bind(this);
     }
 
   componentDidMount() {
     //FETCH REQUEST TO BACKEND
-    // const id = this.props.match.params.id;
-    // fetch(`/api/select/${id}`, {
-    //   method: 'GET',
-    //   header: {
-    //     'Content-Type': 'application/json; charset="UTF-8"'
-    //   }
-    //  })
-    //   .then((data) => data.json())
-    //   .then(movieData => {
-    //     this.setState(state => {
-          // return {
-          //   ...state,
-          //   data: { ...movieData, movienite_user_rating: null }
-          // }
-          // })
-    //   })
-
-    // fetch(`/api/select/exist/:imdbid`, {
-    //   method: 'GET',
-    //   header: {
-    //     'Content-Type': 'application/json; charset="UTF-8"'
-    //   }
-    // })
-    //   .then((data) => data.json())
-    //   .then(data => {
-    //     this.setState(state => {
-    //       return {
-    //         ...state,
-    //         hasBeenLiked: data
-    //       }    
-    //   })
-
-    //DUMMY DATA: 
-    const data = {
-      "Title": "Inception",
-      "Year": "2010",
-      "Rated": "PG-13",
-      "Released": "16 Jul 2010",
-      "Runtime": "148 min",
-      "Genre": "Action, Adventure, Sci-Fi, Thriller",
-      "Director": "Christopher Nolan",
-      "Writer": "Christopher Nolan",
-      "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page, Tom Hardy",
-      "Plot": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-      "Language": "English, Japanese, French",
-      "Country": "USA, UK",
-      "Awards": "Won 4 Oscars. Another 152 wins & 218 nominations.",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-      "Ratings": [
-          {
-              "Source": "Internet Movie Database",
-              "Value": "8.8/10"
-          },
-          {
-              "Source": "Rotten Tomatoes",
-              "Value": "87%"
-          },
-          {
-              "Source": "Metacritic",
-              "Value": "74/100"
-          }
-      ],
-      "Metascore": "74",
-      "imdbRating": "8.8",
-      "imdbVotes": "2,058,501",
-      "imdbID": "tt1375666",
-      "Type": "movie",
-      "DVD": "N/A",
-      "BoxOffice": "$292,576,195",
-      "Production": "Syncopy, Warner Bros.",
-      "Website": "N/A",
-      "Response": "True",
-      "trailer": "youtu.be/Jvurpf91omw"
-    }
-
-    this.setState(state => {
-      return {
-        data: {...data, movienite_user_rating: null},
-        hasBeenLiked: true
+    const id = this.props.match.params.id;
+    fetch(`/api/select/${id}`, {
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json; charset="UTF-8"'
       }
-    });
+     })
+      .then((data) => data.json())
+      .then(movieData => {
+        this.setState(state => {
+          return {
+            ...state,
+            data: { ...movieData, movienite_user_rating: null }
+          }
+          })
+      })
+
+      fetch(`/api/select/exist/${id}`, {
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json; charset="UTF-8"'
+        }
+      })
+        .then((data) => data.json())
+        .then(data => {
+          this.setState(state => {
+            console.log('hasBeenLiked:', data);
+            return {
+              ...state,
+              hasBeenLiked: data
+            }    
+          })
+        })
   }
 
-  async handleSave () {
+async handleSave () {
 
     const id = this.state.data.imdbID;
-    const payload = this.state.data;
+    //console.log('payload:', this.state.data)
+    const payload = {
+      "Title": this.state.data.Title,
+      "Rated": this.state.data.Rated,
+      "Released": this.state.data.Released,
+      "Runtime": this.state.data.Runtime,
+      "Genre": this.state.data.Genre,
+      "Director": this.state.data.Director,
+      "Writer": this.state.data.Writer,
+      "Actors": this.state.data.Actors,
+      "Plot": this.state.data.Plot,
+      "Language": this.state.data.Language,
+      "Country": this.state.data.Country,
+      "Poster": this.state.data.Poster,
+      "imdRating": this.state.data.Ratings[0] ? this.state.data.Ratings[0]["Value"] : 'N/A',
+      "rtRating": this.state.data.Ratings[1] ? this.state.data.Ratings[1]["Value"] : 'N/A',
+      "mcRating": this.state.data.Ratings[2] ? this.state.data.Ratings[2]["Value"] : 'N/A',
+      "imdbRating": this.state.data.imdbRating,
+      "imdbID": this.state.data.imdbID,     
+      "BoxOffice": this.state.data.BoxOffice,
+      "trailer": this.state.data.trailer,
+      "movienite_user_rating": this.state.data.movienite_user_rating
+    }
 
-    await fetch('/api/saved/', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (!this.state.hasBeenLiked) {
+      await fetch('/api/saved/', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    } else {
+      await fetch(`/api/saved/${id}`, {
+        method: 'DELETE',
+      })
+    }
 
-    fetch(`/api/select/exist/:${id}`, {
+    fetch(`/api/select/exist/${id}`, {
       method: 'GET',
       header: {
         'Content-Type': 'application/json; charset="UTF-8"'
@@ -162,6 +144,7 @@ class MovieDetails extends Component {
       .then((data) => data.json())
       .then(data => {
         this.setState(state => {
+          console.log('hasBeenLiked:', data);
           return {
             ...state,
             hasBeenLiked: data
@@ -176,7 +159,7 @@ class MovieDetails extends Component {
   
     return(
       <div className="MovieDetails">
-        <div className="detail-poster"><img src={this.state.Poster}/></div>
+        <div className="detail-poster"><img src={this.state.data.Poster}/></div>
         <div className="details">
           <p><label>Title:</label> {this.state.data.Title}</p>
           <p><label>Year:</label> {this.state.data.Year}</p>

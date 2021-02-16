@@ -5,8 +5,9 @@ import MovieDetails from '../components/MovieDetails';
 class MoviesDisplay extends Component {
 
   render(props) {
-    //console.log(this.props) // { results: [..data] } 
     const { results, clearResults } = this.props; 
+    const title = results.length === 0 ? '' : 'Search Results';
+
     // const results = this.props.results;
     const tiles = Array.isArray(results) ? results.map((result, index) => {
       return(<MovieTile key={index} 
@@ -20,7 +21,7 @@ class MoviesDisplay extends Component {
           <img src="https://media2.giphy.com/media/iGpkO05xWTl17Vhq6Y/giphy.gif"/></div>);
     return(
       <>
-      <h1>Search Results</h1>
+      <h1>{title}</h1>
         <div className="MoviesDisplay">
           { tiles }
         </div>
