@@ -36,5 +36,9 @@ router.delete('/saved/:imdbid', savedMovieController.deleteFilm, (req, res) => {
 });
 
 
+router.get('/userSavedList', savedMovieController.getAllSaved, (req, res) => {
+  console.log(res.locals.allSaved);
+  res.status(200).json(res.locals.allSaved)
+});
 
 module.exports = router;
