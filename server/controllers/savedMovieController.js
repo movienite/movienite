@@ -119,12 +119,14 @@ savedMovieController.savedFilm = (req, res, next) => {
     Poster, imdbRating, 
     BoxOffice, movienite_user_rating, trailer
   } = req.body;
-  // const imdRating = req.body.Ratings[0].Value;
-  // const rtRating = req.body.Ratings[1].Value;
-  // const mcRating = req.body.Ratings[2].Value;
-  const imdRating = req.body.imdRating;
-  const rtRating = req.body.rtRating;
-  const mcRating = req.body.mcRating;
+  const imdRating = req.body.Ratings[0].Value;
+  const rtRating = req.body.Ratings[1].Value;
+  const mcRating = req.body.Ratings[2].Value;
+
+  // USE THESE WHEN TESTING DUMMY DATA FROM POSTMAN
+  // const imdRating = req.body.imdRating;
+  // const rtRating = req.body.rtRating;
+  // const mcRating = req.body.mcRating;
 
 
   const values = [
@@ -171,7 +173,6 @@ savedMovieController.deleteFilm = (req, res, next) => {
       console.error(err);
       return next(err);
     })
-
 };
 
 
