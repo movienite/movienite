@@ -15,7 +15,7 @@ body {
 
 .MovieDetails {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 3.5fr 7fr 50px;
 }
 
 .App {
@@ -28,7 +28,7 @@ body {
 .Header {
   display: flex;
   justify-content: space-between;
-  vertical-align:auto;
+  align-items: center;
   flex-direction: row;
   margin-top: 50px;
   margin-bottom: 50px;
