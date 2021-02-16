@@ -28,6 +28,7 @@ body {
 .Header {
   display: flex;
   justify-content: space-between;
+  vertical-align:auto;
   flex-direction: row;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -41,4 +42,9 @@ body {
 .SearchButton {
   width: 70px;
   height: 36px;
+}
+
+.Header img {
+  max-width: 300px;
+  height: auto;
 }
