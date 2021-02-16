@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "../stylesheets/App.scss"
 import Header from '../components/Header';
 import MoviesDisplay from '../components/MoviesDisplay';
-import MovieDetails from '../components/MovieDetails';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import MoviesDetails from "../components/MovieDetails";
+import MovieDetails from "../components/MovieDetails";
+
 
 class MainContainer extends Component {
 
@@ -18,10 +18,20 @@ class MainContainer extends Component {
 
     this.querySearch = this.querySearch.bind(this);
     this.updateQuery = this.updateQuery.bind(this);
+    this.clearResults = this.clearResults.bind(this);
   }
 
-  componentDidMount() {
-    //this.querySearch();
+  // componentDidMount() {
+  //   //this.querySearch();
+  // }
+
+  clearResults() {
+    this.setState(state => {
+      return {
+        query: '',
+        results: []
+      }
+    })
   }
 
   updateQuery(event) {
@@ -35,8 +45,8 @@ class MainContainer extends Component {
   }
 
   querySearch(event) {
-    event.preventDefault();
-    
+    //event.preventDefault();
+
     // Make get api request to backend route
     let query = this.state.query;
 
@@ -57,8 +67,7 @@ class MainContainer extends Component {
         })
       })
 
-      this.props.history.push('/');
-    // REQUEST WITH DUMMY DATA: 
+    //REQUEST WITH DUMMY DATA: 
     // let data = search.movie_results;
     // // Pass received data to state by invoking setState 
     // this.setState((state) => {
@@ -69,14 +78,16 @@ class MainContainer extends Component {
     // })
   }
 
+
+
   render() {
     return(
       <Router>
         <div className="MainContainer">
           <Header querySearch={this.querySearch} updateQuery={this.updateQuery} query={this.state.query}/> 
           <Switch>
-            <Route path='/' exact render={() => <MoviesDisplay results={this.state.results} />}/>
-            <Route path='/movie/:id' component={MoviesDetails}/>
+            <Route path='/' exact render={() => <MoviesDisplay results={this.state.results} clearResults={this.clearResults} />}/>
+            <Route path='/movie/:id' component={MovieDetails}/>
           </Switch>
         </div>
       </Router>

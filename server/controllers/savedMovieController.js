@@ -92,7 +92,7 @@ savedMovieController.checkSql = (req, res, next) => {
 
   db.query(sqlQuery, value)
     .then(response => {
-      console.log(response);
+      console.log('Check for this value: ', response.rows);
       if (response.rows[0]) {
         res.locals.checkedQuery = true;
         return next();        
@@ -116,12 +116,12 @@ savedMovieController.savedFilm = (req, res, next) => {
   const {
     imdbID, Title, Released, Rated, Runtime,
     Genre, Director, Writer, Actors, Plot, Language, Country, 
-    Poster, imdbRating, 
+    Poster, imdbRating, imdRating, rtRating, mcRating, 
     BoxOffice, movienite_user_rating, trailer
   } = req.body;
-  const imdRating = req.body.Ratings[0].Value;
-  const rtRating = req.body.Ratings[1].Value;
-  const mcRating = req.body.Ratings[2].Value;
+  // const imdRating = req.body.Ratings[0].Value;
+  // const rtRating = req.body.Ratings[1].Value;
+  // const mcRating = req.body.Ratings[2].Value;
 
   // USE THESE WHEN TESTING DUMMY DATA FROM POSTMAN
   // const imdRating = req.body.imdRating;
