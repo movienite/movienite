@@ -12,7 +12,7 @@ class Header extends Component {
         <div className="Header">
             <div>movienite</div>
             <div>
-              <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
+              <input onChange={updateQuery} value={query} className="search-input" type="text"></input>
               <Link to="/"><button onClick={querySearch} className="SearchButton">Search</button></Link>
             </div>
             <div><Link to="/saved">Saved Movies</Link></div>
