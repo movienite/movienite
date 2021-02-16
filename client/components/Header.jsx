@@ -10,12 +10,12 @@ class Header extends Component {
 
     return(
         <div className="Header">
-            <div>movienite</div>
+            <div><img src="../movienitelogo.png"></img></div>
             <div>
               <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
               <Link to="/"><button onClick={querySearch} className="SearchButton">Search</button></Link>
             </div>
-            <div>Saved Movies</div>
+            <div className="SavedMoviesLink"><Link to="/saved">Saved Movies</Link></div>
         </div>
     )
   }
