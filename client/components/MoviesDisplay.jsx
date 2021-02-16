@@ -10,10 +10,10 @@ class MoviesDisplay extends Component {
     // const results = this.props.results;
     const tiles = Array.isArray(results) ? results.map((result, index) => {
       return(<MovieTile key={index} 
-                 title={result.title} 
-                 year={result.year} 
-                 imdbId={result.imdb_id} 
-                 url={result.poster}
+                 title={result.Title} 
+                 year={result.Year} 
+                 imdbId={result.imdbID} 
+                 url={result.Poster}
                  clearResults={clearResults}
                  />)
     }) : (<div><h3>Sorry, couldn't find that movie!</h3>
