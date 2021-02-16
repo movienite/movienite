@@ -15,7 +15,7 @@ class Header extends Component {
               <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
               <Link to="/"><button onClick={querySearch} className="SearchButton">Search</button></Link>
             </div>
-            <div>Saved Movies</div>
+            <div><Link to="/saved">Saved Movies</Link></div>
         </div>
     )
   }
