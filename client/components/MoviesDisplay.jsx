@@ -6,16 +6,18 @@ class MoviesDisplay extends Component {
 
   render(props) {
     //console.log(this.props) // { results: [..data] } 
-    const { results } = this.props; 
+    const { results, clearResults } = this.props; 
     // const results = this.props.results;
-    const tiles = results.map((result, index) => {
+    const tiles = Array.isArray(results) ? results.map((result, index) => {
       return(<MovieTile key={index} 
                  title={result.title} 
                  year={result.year} 
                  imdbId={result.imdb_id} 
                  url={result.poster}
+                 clearResults={clearResults}
                  />)
-    })
+    }) : (<div><h3>Sorry, couldn't find that movie!</h3>
+          <img src="https://media2.giphy.com/media/iGpkO05xWTl17Vhq6Y/giphy.gif"/></div>);
     return(
       <>
       <h1>Search Results</h1>
