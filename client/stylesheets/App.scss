@@ -11,18 +11,33 @@ body {
 .MoviesDisplay {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  font-family: 'merriweather';
+  align-items: center;
+  font-size: x-large;
+  color: #d8dadd;
+}
+
+.SearchResults {
+  font-family:'merriweather';
+  font-weight: 900;
+  font-size: xx-large;
+  text-underline-offset: 10px;
+  color: #d8dadd;
 }
 
 .MovieDetails {
   display: grid;
-  grid-template-columns: 3.5fr 7fr 50px;
+  grid-template-columns: 3.5fr 7fr 35px;
+  font-family: 'merriweather';
+  font-weight: bolder;
+  color: #d8dadd;
+
 }
 
 .App {
   width: 80%;
   margin-left: auto;
   margin-right: auto; 
-
 }
 
 .Header {
@@ -32,6 +47,9 @@ body {
   flex-direction: row;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-family: 'merriweather';
+  font-weight: bolder;
+  color: #d8dadd;
 }
 
 .SearchBar {
@@ -47,4 +65,30 @@ body {
 .Header img {
   max-width: 300px;
   height: auto;
+}
+
+.SavedMoviesLink {
+  border: 2px solid #d8dadd;
+  color: #d8dadd;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.SavedMoviesLink a:visited {
+  color: #d8dadd;
+  text-decoration: none;
+}
+
+.tile-poster {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #444b52;
+}
+
+.tile-poster:hover {
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+.MovieTile {
+  text-align: center;
 }
