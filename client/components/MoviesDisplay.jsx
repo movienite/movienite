@@ -4,9 +4,12 @@ import MovieDetails from '../components/MovieDetails';
 
 class MoviesDisplay extends Component {
 
+  componentDidMount() {
+    this.props.updateSavedList();
+  }
+
   render(props) {
-    const { results, clearResults } = this.props; 
-    const title = results.length === 0 ? '' : 'Search Results';
+    const { results, clearResults, title } = this.props; 
 
     // const results = this.props.results;
     const tiles = Array.isArray(results) ? results.map((result, index) => {
