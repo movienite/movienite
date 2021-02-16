@@ -14,7 +14,7 @@ class MoviesDisplay extends Component {
     // const results = this.props.results;
     const tiles = Array.isArray(results) ? results.map((result, index) => {
       return(<MovieTile key={index} 
-                 title={result.Title} 
+                 title={result.Title.toUpperCase()} 
                  year={result.Year} 
                  imdbId={result.imdbID} 
                  url={result.Poster}

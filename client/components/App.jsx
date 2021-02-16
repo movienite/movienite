@@ -89,16 +89,22 @@ class App extends Component {
         'Content-Type': 'application/json; charset="UTF-8"',
       }
      })
-      .then((data) => data.json())
-      .then(data => {
-        console.log(data);
+      .then((data) => {
+        console.log('data', data)
+        return data.json();
+      })
+      .then(movieData => {
+        console.log('movieData:', movieData);
         this.setState((state) => {
           return {
             query: '',
-            results: data,
+            results: movieData,
             title: 'Search Results'
           }
         })
+      })
+      .catch(error => {
+        console.log(error)
       })
 
       //Update the number of searches:
