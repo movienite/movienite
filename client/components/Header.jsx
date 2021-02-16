@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import SearchBar from './SearchBar';
+import { Link } from 'react-router-dom'
+
 
 class Header extends Component {
 
@@ -9,14 +10,12 @@ class Header extends Component {
 
     return(
         <div className="Header">
-          
             <div>movienite</div>
-            <div className="search-bar">
-              <input onChange={updateQuery} value={query} className="search-input" type="text"></input>
-              <button onClick={querySearch} className="SearchButton">Search</button>
-            </div>            
-            <div>Saved Movies</div>
-        
+            <div>
+              <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
+              <Link to="/"><button onClick={querySearch} className="SearchButton">Search</button></Link>
+            </div>
+            <div><Link to="/saved">Saved Movies</Link></div>
         </div>
     )
   }

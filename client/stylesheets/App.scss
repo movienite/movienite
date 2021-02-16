@@ -13,6 +13,11 @@ body {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.MovieDetails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .App {
   width: 80%;
   margin-left: auto;
