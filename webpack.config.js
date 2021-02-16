@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
-    publicPath: "/build/",
+    publicPath: "/",
   },
   mode: process.env.NODE_ENV,
   module: {
@@ -36,7 +36,8 @@ module.exports = {
         secure: false,
       }
     },
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
 }

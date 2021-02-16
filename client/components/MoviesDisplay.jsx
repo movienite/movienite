@@ -23,12 +23,12 @@ class MoviesDisplay extends Component {
     }) : (<div><h3>Sorry, couldn't find that movie!</h3>
           <img src="https://media2.giphy.com/media/iGpkO05xWTl17Vhq6Y/giphy.gif"/></div>);
     return(
-      <>
-      <h1 className="SearchResults">{title.toUpperCase()}</h1>
+      <div>
+      <h1>{title}</h1>
         <div className="MoviesDisplay">
           { tiles }
         </div>
-      </>
+      </div>
     )
   }
 }

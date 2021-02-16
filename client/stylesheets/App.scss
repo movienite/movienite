@@ -52,7 +52,7 @@ body {
   color: #d8dadd;
 }
 
-.SearchBar {
+.search-input {
   width: 600px;
   height: 30px;
 }
@@ -60,6 +60,23 @@ body {
 .SearchButton {
   width: 70px;
   height: 36px;
+}
+
+.home-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.home-logo {
+  margin-bottom: 50px;
+  font-size: 3em;
+}
+
+.home-logo img {
+  width: 450px; 
 }
 
 .Header img {
@@ -81,7 +98,7 @@ body {
 
 .tile-poster {
   border-radius: 10px;
-  box-shadow: 5px 5px 5px #444b52;
+  box-shadow: 5px 5px 5px #000000;
 }
 
 .tile-poster:hover {
@@ -91,4 +108,5 @@ body {
 
 .MovieTile {
   text-align: center;
+  font-size: 16px;
 }
