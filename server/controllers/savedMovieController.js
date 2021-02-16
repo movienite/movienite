@@ -176,4 +176,23 @@ savedMovieController.deleteFilm = (req, res, next) => {
 };
 
 
+
+savedMovieController.getAllSaved = (req, res, next) => {
+  // TWO DIFFERENT QUERY METHODS BELOW, SELECT ONE ONLY
+  // const sqlQuery = `SELECT * FROM savedmovies`;
+  const sqlQuery = 'SELECT imdb_film_id, title, release_date, poster FROM savedmovies'; 
+
+  db.query(sqlQuery)
+    .then(response => {
+      // console.log(response);
+      res.locals.allSaved = response.rows;
+      return next();   
+    })
+    .catch(err => {
+      console.error(err);
+      return next(err);
+    })
+};
+
+
 module.exports = savedMovieController;
