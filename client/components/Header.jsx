@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 class Header extends Component {
@@ -10,12 +12,12 @@ class Header extends Component {
 
     return(
         <div className="Header">
-            <div>movienite</div>
+            <div><img src="../movienitelogo.png"></img></div>
             <div>
-              <input onChange={updateQuery} value={query} className="SearchBar" type="text"></input>
-              <Link to="/"><button onClick={querySearch} className="SearchButton">Search</button></Link>
+              <input onChange={updateQuery} value={query} className="search-input" type="text"></input>
+              <Link to="/"><button onClick={querySearch} className="SearchButton"><FontAwesomeIcon icon={faSearch} size="1x"/></button></Link>
             </div>
-            <div><Link to="/saved">Saved Movies</Link></div>
+            <div className="SavedMoviesLink"><Link to="/saved">Saved Movies</Link></div>
         </div>
     )
   }

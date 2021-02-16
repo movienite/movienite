@@ -144,7 +144,7 @@ async handleSave () {
       .then((data) => data.json())
       .then(data => {
         this.setState(state => {
-          console.log('hasBeenLiked:', data);
+          // console.log('hasBeenLiked:', data);
           return {
             ...state,
             hasBeenLiked: data
@@ -175,7 +175,7 @@ async handleSave () {
           <p><label>Country:</label> {this.state.data.Country}</p>
           <p><label>Awards:</label> {this.state.data.Awards}</p>
           <p><label>IMDB Rating:</label> {this.state.data.imdbRating}</p>
-          <p><label>Rotten Tomatoes Rating:</label> {this.state.data.Ratings[1]["Value"]}</p>
+          <p><label>Rotten Tomatoes Rating:</label> {this.state.data.Ratings[1] ? this.state.data.Ratings[1]["Value"] : 'N/A'}</p>
           <p><label>Metacritic:</label> {this.state.data.Metascore}</p>
           <p><label>Box Office:</label> {this.state.data.BoxOffice}</p>
           <p><label>Production:</label> {this.state.data.Production}</p>
