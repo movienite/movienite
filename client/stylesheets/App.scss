@@ -34,6 +34,12 @@ body {
 
 }
 
+.trailer-button {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .App {
   width: 80%;
   margin-left: auto;
@@ -114,3 +120,5 @@ body {
 .no-results h3 {
   font-size: 20px;
 }
+
+

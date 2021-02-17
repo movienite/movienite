@@ -152,6 +152,22 @@ async handleSave () {
         })
       })
   }
+
+
+  
+  // [ ] have "modal" html
+  // [ ] have "modal" css
+  onTrailerClick() {
+      // get data from state for youtube url
+      // use the youtube url to display a trailer
+    // on click event, display modal
+    // allow user to click / play trailer 
+    // ability to click out of and/or close the modal 
+  }
+
+
+
+
   
   render() {
     
@@ -159,7 +175,26 @@ async handleSave () {
   
     return(
       <div className="MovieDetails">
-        <div className="detail-poster"><img src={this.state.data.Poster}/></div>
+        {/* start of Modal HTML */}
+        <div id="trailer-Modal" className="modal" tabindex="-1" role="dialog">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End of Modal HTML */}
+        <div className="detail-poster"><img src={this.state.data.Poster}/>
+          <div className="trailer-button">
+              {/* <button>test</button> */}
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trailer-Modal">test</button>
+            </div>
+        </div>
         <div className="details">
           <p><label>Title:</label> {this.state.data.Title}</p>
           <p><label>Year:</label> {this.state.data.Year}</p>
