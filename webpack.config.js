@@ -31,12 +31,13 @@ module.exports = {
     port: 8080,
     publicPath: "/build",
     proxy: {
-      // '/api': {
-      //   target: 'http://localhost:3000',
-      //   secure: false,
-      // },
+      '/api': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
       '/': 'http://localhost:3000',
-      '/signup': 'http://localhost:3000'
+      '/signup': 'http://localhost:3000',
+      '/login': 'http://localhost:3000',
     },
     hot: true,
     historyApiFallback: true

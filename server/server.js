@@ -22,13 +22,17 @@ user will be sent to the login page
 
 Serve initial static index.html front page */
 app.use(express.static(path.resolve(__dirname, '../build')));
-
+// app.use(express.static(path.resolve(__dirname, '../client')));
 
 /*********** SIGN UP BEG **************/
 // create an endpoint where user signs up
 app.get('/', (req, res) => {
   // send to ejs file where user will be prompted to give username & pwd
   console.log('Getting response');
+  res.render('login', {error: null});
+})
+
+app.get('/signup', (req, res) => {
   res.render('signup', {error: null});
 })
 
@@ -37,20 +41,27 @@ app.get('/', (req, res) => {
 app.post('/signup', 
   usersController.createUser,
   (req, res) => {
-    res.render('./views/login');
+    res.render('login', {error: null});
   }
 )
 
 /********  SIGN UP END ***********/
 
 // create an endpoint where user logs in
-// app.get('/login', (req, res) => {
-//   res.render('./views/login', {error: null});
-// })
+app.get('/login', (req, res) => {
+  res.render('login', {error: null});
+})
 
+app.post('/login',
+  usersController.verifyUser,
+  (req, res) => {
+    // res.sendStatus(200);
+    res.status(200).sendFile(path.resolve(__dirname, "../client/index.html"));
+  }
+)
 
 /* Define route handlers */
-// app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 
 // global error handler
 app.use((err, req, res, next) => {
