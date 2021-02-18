@@ -11,6 +11,7 @@ body {
 .MoviesDisplay {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 16px;
   font-family: 'merriweather';
   align-items: center;
   font-size: x-large;
@@ -203,4 +204,9 @@ body {
 #movie-logo-png img {
   max-width: 75px;
   max-height: 75px;
+}
+
+.centerText {
+  text-align: center;
+  margin-bottom: 20px;
 }
