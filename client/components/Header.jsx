@@ -12,7 +12,9 @@ class Header extends Component {
 
     return(
         <div className="Header">
-            <div><img src="../movienitelogo.png"></img></div>
+            <div id="movie-logo-png">
+              <img src="../movie-logo.png"></img>
+            </div>
             <div>
               <input onChange={updateQuery} value={query} className="search-input" type="text"></input>
               <Link to="/"><button onClick={querySearch} className="SearchButton"><FontAwesomeIcon icon={faSearch} size="1x"/></button></Link>

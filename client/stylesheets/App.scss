@@ -59,13 +59,20 @@ body {
 }
 
 .search-input {
-  width: 600px;
+  min-width: 33vw;
+  max-width: 600px;
   height: 30px;
+  border-radius: 4px;
+  justify-content: space-between;
+  margin-right: 10px;
 }
 
 .SearchButton {
   width: 70px;
-  height: 36px;
+  height: 32px;
+  color: #4A4A4A;
+  border-radius: 4px;
+  transition: background 0.3s ease;
 }
 
 .home-div {
@@ -156,3 +163,7 @@ body {
   color: #32A350;
 }
 
+#movie-logo-png img {
+  max-width: 75px;
+  max-height: 75px;
+}
