@@ -98,15 +98,52 @@ body {
 }
 
 .SavedMoviesLink {
-  border: 2px solid #d8dadd;
-  color: #d8dadd;
-  padding: 5px;
-  text-decoration: none;
+  // border: 2px solid #d8dadd;
+  // color: #d8dadd;
+  // padding: 5px;
+  // text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: lighter;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    max-height: 25px;
+}
+
+.SavedMoviesLink:hover {
+  opacity: 1;
 }
 
 .SavedMoviesLink a:visited {
   color: #d8dadd;
   text-decoration: none;
+  
+}
+
+.SavedMoviesLink a {
+  color: #d8dadd;
+  text-decoration: none;
+}
+
+.SavedMoviesLinkText {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 8px;
+}
+
+.SavedMoviesLinkAlignItems {
+  display: flex;
+  justify-content: space-around;
+  align-items: center !important;
+}
+
+.adjustHeartIcon {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2px;
 }
 
 .tile-poster {
