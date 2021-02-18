@@ -18,7 +18,14 @@ function Home(props){
   return(
       <div className="home-div">
         {/* <div className="home-logo"><img src="../movienitelogo.png"></img></div> */}
-        <div className="home-logo">Moogle</div>
+        <div className="home-logo moogle-logo">
+          <span className="moogle-blue">M</span>
+          <span className="moogle-red">o</span>
+          <span className="moogle-yellow">o</span>
+          <span className="moogle-blue">g</span>
+          <span className="moogle-green">l</span>
+          <span className="moogle-red">e</span>
+        </div>
           <div className="home-searchbar">
             <input onChange={updateQuery} className="search-input" type="text" value={query}></input>
             <button onClick={handleClick} className="SearchButton"><FontAwesomeIcon icon={faSearch} size="1x"/></button>
