@@ -17,7 +17,8 @@ function Home(props){
 
   return(
       <div className="home-div">
-        <div className="home-logo"><img src="../movienitelogo.png"></img></div>
+        {/* <div className="home-logo"><img src="../movienitelogo.png"></img></div> */}
+        <div className="home-logo">Moogle</div>
           <div className="home-searchbar">
             <input onChange={updateQuery} className="search-input" type="text" value={query}></input>
             <button onClick={handleClick} className="SearchButton"><FontAwesomeIcon icon={faSearch} size="1x"/></button>

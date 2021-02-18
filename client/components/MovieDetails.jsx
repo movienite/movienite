@@ -51,6 +51,7 @@ class MovieDetails extends Component {
           "trailer": "",
           "movienite_user_rating": ""
         },
+
         hasBeenLiked: false,
       }
 
@@ -177,10 +178,21 @@ async handleSave () {
       <div className="MovieDetails">
         {/* start of Modal HTML */}
         <div id="trailer-Modal" className="modal" tabindex="-1" role="dialog">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-body">
-                <p>Modal body text goes here.</p>
+          <div className="modal-dialog " role="document">
+            <div className="modal-content trailer-Modal-transparent">
+              <div className="modal-body" id="trailer-Modal-center">
+                <iframe 
+                        width="560" 
+                        height="315"
+                        src={`https://www.${this.state.data.trailer}`}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen="allowfullscreen"
+                        mozallowfullscreen="mozallowfullscreen" 
+                        msallowfullscreen="msallowfullscreen" 
+                        oallowfullscreen="oallowfullscreen" 
+                        webkitallowfullscreen="webkitallowfullscreen">
+                </iframe>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -192,7 +204,7 @@ async handleSave () {
         <div className="detail-poster"><img src={this.state.data.Poster}/>
           <div className="trailer-button">
               {/* <button>test</button> */}
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trailer-Modal">test</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trailer-Modal">Trailer</button>
             </div>
         </div>
         <div className="details">
@@ -214,7 +226,6 @@ async handleSave () {
           <p><label>Metacritic:</label> {this.state.data.Metascore}</p>
           <p><label>Box Office:</label> {this.state.data.BoxOffice}</p>
           <p><label>Production:</label> {this.state.data.Production}</p>
-          <p><label>Trailer:</label> {this.state.data.trailer}</p>
         </div>
         <div className="like"><span onClick={this.handleSave}><FontAwesomeIcon icon={heart} size="2x"/></span></div>
       </div>

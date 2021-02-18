@@ -73,7 +73,7 @@ savedMovieController.getTrailer = (req, res, next) => {
   axios.request(options)
     .then(response => {
       // console.log(response.data);
-      res.locals.filmDetails.trailer = `youtu.be/${response.data.youtube_trailer_key}`;
+      res.locals.filmDetails.trailer = `youtube.com/embed/${response.data.youtube_trailer_key}`;
       return next();
     })
     .catch(err => {
