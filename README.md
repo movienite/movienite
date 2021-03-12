@@ -1,2 +1,2 @@
 # movienite
-all your movies in a list.
+All your movies in a list.
