@@ -1,2 +1,2 @@
 # movienite
-Personal ranking of NYT film critic reviews
+All your movies in a list.
