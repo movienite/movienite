@@ -83,7 +83,7 @@ class App extends Component {
     // Make get api request to backend route
     let query = this.state.query;
 
-     fetch(`/api/search/${query}`, {
+    fetch(`/api/search/${query}`, {
       method: 'GET',
       header: {
         'Content-Type': 'application/json; charset="UTF-8"',
@@ -124,25 +124,25 @@ class App extends Component {
     return(
       <Router>
         <div className="App">
-        <Switch>
-          <Route path='/' exact render={() => <Home 
-            query={this.state.query} 
-            updateQuery={this.updateQuery} 
-            querySearch={this.querySearch}
-          />}/>
-          <Route path="/search" render={() => <MainContainer 
-            query={this.state.query} 
-            results={this.state.results}
-            savedList={this.state.savedList}
-            title={this.state.title}
-            firstSearch={this.state.firstSearch}
-            updateQuery={this.updateQuery} 
-            querySearch={this.querySearch}
-            updateSavedList={this.updateSavedList}
-            clearResults={this.clearResults}
-            searchCount={this.state.searchCount}
-          />}/>
-        </Switch>
+          <Switch>
+            <Route path='/' exact render={() => <Home 
+              query={this.state.query} 
+              updateQuery={this.updateQuery} 
+              querySearch={this.querySearch}
+            />}/>
+            <Route path="/search" render={() => <MainContainer 
+              query={this.state.query} 
+              results={this.state.results}
+              savedList={this.state.savedList}
+              title={this.state.title}
+              firstSearch={this.state.firstSearch}
+              updateQuery={this.updateQuery} 
+              querySearch={this.querySearch}
+              updateSavedList={this.updateSavedList}
+              clearResults={this.clearResults}
+              searchCount={this.state.searchCount}
+            />}/>
+          </Switch>
         </div>
       </Router>
     )
