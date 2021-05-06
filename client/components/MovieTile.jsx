@@ -10,14 +10,13 @@ class MovieTile extends Component {
   render(props) {
     const { title, year, imdbId, url, clearResults } = this.props; 
     return(
-        <div className="MovieTile">
-          <p>{title}</p>
-          <p>{year}</p>
-          <Link to={`/movie/${imdbId}`}><span onClick={clearResults}><img className="tile-poster" src={url}></img></span></Link>
-        </div>
+      <div className="MovieTile">
+        <p>{title}</p>
+        <p>{year}</p>
+        <Link to={`/movie/${imdbId}`}><span onClick={clearResults}><img className="tile-poster" src={url}></img></span></Link>
+      </div>
     )
   }
 }
 
 export default MovieTile;
-

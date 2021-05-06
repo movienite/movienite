@@ -33,6 +33,7 @@ savedMovieController.findTitleAndId = (req, res, next) => {
 // This makes a GET fetch to RapidAPI's IMDb Alternative API with a specific imdbId 
 // and returns a large list of various movie details
 savedMovieController.selectTitle = (req, res, next) => {
+  console.log('testing this location')
   const options = {
     method: 'GET',
     url: 'https://movie-database-imdb-alternative.p.rapidapi.com/',

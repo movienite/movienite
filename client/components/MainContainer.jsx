@@ -24,7 +24,7 @@ class MainContainer extends Component {
             <Route path='/movie/:id' component={MovieDetails}/>
           </Switch>
         </div>
-        </Router>
+      </Router>
     )
   }
 }
