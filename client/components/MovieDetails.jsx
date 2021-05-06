@@ -181,7 +181,11 @@ async handleSave () {
           <p><label>Production:</label> {this.state.data.Production}</p>
           <p><label>Trailer:</label> {this.state.data.trailer}</p>
         </div>
-        <div className="like"><span onClick={this.handleSave}><FontAwesomeIcon icon={heart} size="2x"/></span></div>
+        <div className="like">
+          <span onClick={this.handleSave}>
+            <FontAwesomeIcon icon={heart} size="2x"/>
+          </span>
+        </div>
       </div>
     )
   }
