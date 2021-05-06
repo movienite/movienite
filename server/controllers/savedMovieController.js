@@ -45,7 +45,7 @@ savedMovieController.selectTitle = (req, res, next) => {
 
   axios.request(options)
     .then(response => {
-      // console.log(response.data);
+      // console.log('TESTING: ', response.data);
       res.locals.filmDetails = response.data;
       return next();
     })

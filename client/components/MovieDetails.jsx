@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as filledHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as unfilledHeart } from '@fortawesome/free-regular-svg-icons';
+import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
 
 class MovieDetails extends Component {
 
