@@ -40,7 +40,6 @@ class App extends Component {
       .then(data => {
         console.log(data);
         this.setState((state) => {
-
           let newData = [];
           data.forEach(fav => {
             let newObj = {};
