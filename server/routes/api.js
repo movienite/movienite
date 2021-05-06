@@ -12,7 +12,7 @@ router.get('/search/:title', savedMovieController.findTitleAndId, (req, res) => 
 
 router.get('/select/:imdbid', 
   savedMovieController.selectTitle, 
-  savedMovieController.getTrailer,
+  // savedMovieController.getTrailer,
   (req, res) => {
     console.log(res.locals.filmDetails);
     res.status(200).json(res.locals.filmDetails);

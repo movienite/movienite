@@ -8,6 +8,8 @@
 
 Movienite uses the IMDb and IMDb Alternative APIs to search through two databases of film details. The front end interface is built using React with standard top-down state management. The back end consists of a RESTful API built in Node/Express and a SQL database using PostgreSQL.
 
+Due to expiration of our RapidAPI paid account for the IMDb API (not the IMDb Alternative API), trailers can't be searched for. That middleware has been commented out.
+
 <br>
 
 ## Technologies
